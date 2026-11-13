@@ -64,7 +64,7 @@ h2 em, h1 em { font-style: italic; color: var(--accent); }
 /* Шапка */
 .site-header {
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40;
-  background: var(--header-bg); backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px);
+  background: var(--header-bg); background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px);
   border-bottom: 1px solid transparent; transition: border-color .3s;
 }
 .site-header.scrolled { border-bottom-color: var(--line); }
@@ -72,7 +72,7 @@ h2 em, h1 em { font-style: italic; color: var(--accent); }
 .brand { display: flex; align-items: center; min-width: 0; min-height: 44px; text-decoration: none; font: 500 26px/1 var(--font-head); flex-shrink: 0; }
 .brand img { max-height: 50px; width: auto; max-width: min(190px, 46vw); object-fit: contain; border-radius: 6px; }
 .nav { display: none; gap: 28px; margin-left: auto; font-size: 14px; font-weight: 500; }
-.nav a { text-decoration: none; color: var(--ink-soft); transition: color .2s; }
+.nav a { text-decoration: none; color: var(--ink-soft); transition: color .2s; padding: 12px 0; }
 .nav a:hover { color: var(--ink); }
 .header-cta { margin-left: auto; }
 .header-cta .btn { min-height: 44px; padding: 0 20px; font-size: 14px; }
@@ -118,7 +118,8 @@ h2 em, h1 em { font-style: italic; color: var(--accent); }
 h1 { font-size: 52px; line-height: .98; margin: 0 0 18px; }
 .tagline { font-size: 18px; color: var(--ink-soft); margin: 0 0 24px; max-width: 520px; }
 .meta { display: grid; gap: 10px; margin: 0 0 28px; font-size: 15px; color: var(--ink-soft); }
-.meta-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.meta-row { display: flex; align-items: center; gap: 10px; }
+.meta-row .metro-dot { align-self: flex-start; margin-top: .5em; }
 .metro-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
 .status { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--ink-soft); }
 .status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--closed); }
@@ -141,14 +142,14 @@ section.block.alt { background: var(--bg-alt); }
 /* Направления */
 .directions { display: grid; gap: 12px; }
 .direction {
-  position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 18px;
+  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 18px;
   padding: 22px 22px; border-radius: 22px; background: var(--card); border: 1px solid var(--line);
   text-decoration: none; color: inherit; cursor: pointer; font: inherit; text-align: left; width: 100%;
   transition: transform .3s, box-shadow .3s, border-color .3s;
 }
 .direction:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: transparent; }
 .direction-num { font: italic 500 22px/1 var(--font-head); color: var(--accent); width: 30px; }
-.direction-name { font: 500 26px/1.1 var(--font-head); display: block; }
+.direction-name { font: 500 26px/1.1 var(--font-head); display: block; overflow-wrap: anywhere; }
 .direction-info { font-size: 13px; color: var(--ink-soft); display: block; margin-top: 4px; }
 .direction-go {
   width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-size: 18px;
@@ -183,6 +184,16 @@ section.block.alt { background: var(--bg-alt); }
 .promo-points { list-style: none; margin: 0; padding: 0 26px 30px; display: grid; gap: 10px; }
 .promo-points li { padding: 18px 20px; border-radius: 18px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .12); font-size: 15px; line-height: 1.45; }
 .promo-points li::before { content: "✦"; color: color-mix(in srgb, var(--accent) 45%, #fff); margin-right: 10px; }
+
+/* Основатель студии */
+.founder-grid { display: grid; gap: 28px; align-items: center; }
+.founder-grid.no-photo { max-width: 860px; margin: 0 auto; text-align: center; }
+.founder-grid.no-photo .eyebrow { justify-content: center; }
+.founder-photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
+.founder-quote { margin: 0; font: italic 400 28px/1.3 var(--font-head); position: relative; }
+.founder-quote::before { content: "“"; display: block; font: 500 80px/.5 var(--font-head); color: var(--accent); height: 40px; margin-bottom: 8px; }
+.founder-name { margin: 24px 0 0; font-weight: 600; font-size: 16px; }
+.founder-name span { display: block; font-weight: 400; font-size: 14px; color: var(--ink-soft); margin-top: 2px; }
 
 /* Прайс */
 .tabs { display: flex; gap: 8px; overflow-x: auto; margin: 0 -20px 28px; padding: 0 20px 6px; scrollbar-width: none; }
@@ -298,7 +309,6 @@ footer { padding: 28px 0 34px; font-size: 13px; color: var(--ink-soft); text-ali
 @media (min-width: 760px) {
   body { padding-bottom: 0; }
   .float-call { display: none; }
-  .nav { display: flex; }
   .header-cta { margin-left: 8px; }
   .wrap { padding: 0 32px; }
   h2 { font-size: 60px; }
@@ -323,6 +333,9 @@ footer { padding: 28px 0 34px; font-size: 13px; color: var(--ink-soft); text-ali
   .promo { grid-template-columns: 1.1fr 1fr; align-items: stretch; }
   .promo img { height: 100%; aspect-ratio: auto; min-height: 380px; }
   .promo-body { padding: 56px; align-self: center; }
+  .founder-grid { grid-template-columns: .8fr 1.2fr; gap: 72px; }
+  .founder-grid.no-photo { grid-template-columns: 1fr; }
+  .founder-quote { font-size: 42px; }
   .promo.no-photo { grid-template-columns: 1fr 1fr; align-items: center; }
   .promo-points { padding: 56px 56px 56px 0; }
   .promo h3 { font-size: 48px; }
@@ -355,3 +368,12 @@ footer { padding: 28px 0 34px; font-size: 13px; color: var(--ink-soft); text-ali
   .final-phone { font-size: 40px; }
 }
 .final .eyebrow, .promo-body .eyebrow { color: color-mix(in srgb, var(--accent) 45%, #fff); }
+
+/* Меню в шапке — только на широком экране: на планшете и повёрнутом телефоне оно не помещается рядом с кнопкой */
+@media (min-width: 1024px) { .nav { display: flex; } }
+/* Узкие телефоны (320 px): карточки направлений компактнее */
+@media (max-width: 359px) {
+  .direction { gap: 12px; padding: 18px 16px; }
+  .direction-name { font-size: 22px; }
+  .direction-num { width: 22px; }
+}
