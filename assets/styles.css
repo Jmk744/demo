@@ -49,18 +49,18 @@ body.mode-dark .demo-bar { border-bottom: 1px solid var(--line); }
 /* Шапка */
 .site-header {
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40;
-  background: var(--header-bg); backdrop-filter: saturate(160%) blur(12px); -webkit-backdrop-filter: saturate(160%) blur(12px);
-  border-bottom: 1px solid var(--line);
+  background: var(--bg); /* сплошная, в цвет фона страницы — шапка не выделяется при прокрутке */
+  border-bottom: 0;
 }
 .header-row { display: flex; align-items: center; gap: 20px; min-height: 64px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 18px; flex-shrink: 0; }
 .brand { min-width: 0; min-height: 44px; }
 .brand img { height: auto; max-height: 52px; width: auto; max-width: min(200px, 48vw); object-fit: contain; border-radius: 6px; }
 .nav { display: none; gap: 22px; margin-left: auto; font-size: 15px; }
-.nav a { text-decoration: none; color: var(--ink-soft); }
+.nav a { text-decoration: none; color: var(--ink-soft); padding: 12px 0; }
 .nav a:hover { color: var(--ink); }
 .header-cta { margin-left: auto; }
-.header-cta .btn { min-height: 42px; padding: 0 16px; font-size: 15px; }
+.header-cta .btn { min-height: 44px; padding: 0 16px; font-size: 15px; }
 
 /* Кнопки */
 .btn {
@@ -74,7 +74,7 @@ body.mode-dark .demo-bar { border-bottom: 1px solid var(--line); }
 .btn-primary:hover { background: var(--accent-dark); }
 .btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
 .btn-ghost:hover { border-color: var(--ink-soft); }
-.btn-small { min-height: 40px; padding: 0 14px; font-size: 14px; font-weight: 600; border-radius: 12px; }
+.btn-small { min-height: 44px; padding: 0 14px; font-size: 14px; font-weight: 600; border-radius: 12px; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; }
 
 /* Первый экран */
@@ -151,7 +151,7 @@ h2 { font-size: 28px; margin: 0 0 22px; line-height: 1.15; }
 .stars { color: #f5b301; font-size: 20px; letter-spacing: 2px; }
 .reviews { display: grid; gap: 12px; }
 .review { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; margin: 0; }
-.source-link { display: inline-block; margin-top: 16px; font-size: 14px; color: var(--ink-soft); }
+.source-link { display: inline-block; margin-top: 16px; font-size: 14px; color: var(--ink-soft); padding: 12px 0; }
 
 /* Фото */
 .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }

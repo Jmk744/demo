@@ -64,10 +64,9 @@ h2 em, h1 em { font-style: italic; color: var(--accent); }
 /* Шапка */
 .site-header {
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40;
-  background: var(--header-bg); background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px);
-  border-bottom: 1px solid transparent; transition: border-color .3s;
+  background: var(--bg); /* сплошная, в цвет фона страницы — шапка не выделяется при прокрутке */
+  border-bottom: 0;
 }
-.site-header.scrolled { border-bottom-color: var(--line); }
 .header-row { display: flex; align-items: center; gap: 20px; min-height: 68px; }
 .brand { display: flex; align-items: center; min-width: 0; min-height: 44px; text-decoration: none; font: 500 26px/1 var(--font-head); flex-shrink: 0; }
 .brand img { max-height: 50px; width: auto; max-width: min(190px, 46vw); object-fit: contain; border-radius: 6px; }
@@ -303,7 +302,8 @@ footer { padding: 28px 0 34px; font-size: 13px; color: var(--ink-soft); text-ali
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
-  .marquee-track, .hero-photo img, .cat-panel { animation: none; }
+  .hero-photo img, .cat-panel { animation: none; }
+  .marquee-track { animation-duration: 90s; } /* бегущая строка не останавливается, только медленнее */
 }
 
 @media (min-width: 760px) {
