@@ -429,3 +429,18 @@ section.block.block-tight { padding: 0 0 56px; }
   .table-inline { grid-template-columns: minmax(220px, 1fr) minmax(0, 1.5fr); }
 }
 .price-table3 thead th:first-child { text-align: left; padding-left: 0; }
+
+/* Адрес на первом экране: кружок слева от первой строки, даже если адрес переносится */
+.meta-row.addr { flex-wrap: nowrap; align-items: flex-start; }
+.meta-row.addr .metro-dot { margin-top: 7px; }
+/* Полоса цифр на телефоне: последняя цифра при нечётном числе — на всю ширину */
+.stats-row.count-3 .stat:nth-child(3), .stats-row.count-5 .stat:nth-child(5) { grid-column: span 2; }
+/* Телефоны в нижнем блоке: удобная высота для пальца */
+.final-phones { display: flex; flex-wrap: wrap; gap: 0 28px; margin-bottom: 20px; }
+.final-phones .final-phone { margin-bottom: 0; min-height: 44px; display: inline-flex; align-items: center; }
+@media (min-width: 760px) {
+  .stats-row.count-3 .stat:nth-child(3), .stats-row.count-5 .stat:nth-child(5) { grid-column: auto; }
+}
+/* Номер телефона не переносится посреди цифр: шрифт подстраивается под ширину экрана */
+.final-phone { white-space: nowrap; font-size: clamp(19px, 6.6vw, 26px); }
+@media (min-width: 760px) { .final-phone { font-size: 36px; } }
