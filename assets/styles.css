@@ -54,10 +54,10 @@ body.mode-dark .demo-bar { border-bottom: 1px solid var(--line); }
 }
 .header-row { display: flex; align-items: center; gap: 20px; min-height: 64px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 18px; flex-shrink: 0; }
-.brand { min-width: 0; min-height: 44px; }
+.brand { min-width: 44px; min-height: 44px; }
 .brand img { height: auto; max-height: 52px; width: auto; max-width: min(200px, 48vw); object-fit: contain; border-radius: 6px; }
 .nav { display: none; gap: 22px; margin-left: auto; font-size: 15px; }
-.nav a { text-decoration: none; color: var(--ink-soft); padding: 12px 0; }
+.nav a { text-decoration: none; color: var(--ink-soft); padding: 12px 0; display: inline-block; min-width: 44px; text-align: center; }
 .nav a:hover { color: var(--ink); }
 .header-cta { margin-left: auto; }
 .header-cta .btn { min-height: 44px; padding: 0 16px; font-size: 15px; }
@@ -91,7 +91,7 @@ h1 { font-size: 36px; line-height: 1.08; margin: 0 0 8px; }
 .metro-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
 .status { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--ink-soft); }
 .status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--closed); }
-.status.open { color: var(--ok); }
+.status.open { color: color-mix(in srgb, var(--ok) 60%, var(--ink)); } /* зелёный, смешанный с цветом текста: темнее на светлом фоне, светлее на тёмном — читается на любом фоне бренда */
 .status.open .dot { background: var(--ok); }
 .phone-big { display: inline-block; font-size: 24px; font-weight: 800; text-decoration: none; margin-bottom: 12px; padding: 6px 0; letter-spacing: -.01em; }
 .messengers { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
@@ -168,6 +168,8 @@ h2 { font-size: 28px; margin: 0 0 22px; line-height: 1.15; }
 .hours-table td { padding: 4px 0; }
 .hours-table td:last-child { text-align: right; font-weight: 600; }
 .hours-table tr.today td { color: var(--accent); }
+/* Мелкий текст цветом бренда на тёмном фоне — чуть светлее, чтобы читался (насыщенный красный/синий на чёрном сливается) */
+body.mode-dark .promo-label, body.mode-dark .hours-table tr.today td { color: color-mix(in srgb, var(--accent) 75%, #fff); }
 .map { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); min-height: 320px; background: var(--bg-alt); }
 .map iframe { width: 100%; height: 100%; min-height: 320px; border: 0; display: block; }
 

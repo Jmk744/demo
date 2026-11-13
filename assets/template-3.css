@@ -70,10 +70,10 @@ h2 { font-size: 30px; line-height: 1.1; }
   border-bottom: 0;
 }
 .header-row { display: flex; align-items: center; gap: 20px; min-height: 66px; }
-.brand { display: flex; align-items: center; min-width: 0; min-height: 44px; text-decoration: none; font: 700 17px/1.1 var(--font-head); text-transform: uppercase; }
+.brand { display: flex; align-items: center; min-width: 44px; min-height: 44px; text-decoration: none; font: 700 17px/1.1 var(--font-head); text-transform: uppercase; }
 .brand img { max-height: 46px; width: auto; max-width: min(180px, 44vw); object-fit: contain; border-radius: 4px; }
 .nav { display: none; gap: 26px; margin-left: auto; font-size: 14px; font-weight: 500; }
-.nav a { text-decoration: none; color: var(--ink-soft); transition: color .2s; padding: 12px 0; }
+.nav a { text-decoration: none; color: var(--ink-soft); transition: color .2s; padding: 12px 0; display: inline-block; min-width: 44px; text-align: center; }
 .nav a:hover { color: var(--ink); }
 .header-cta { margin-left: auto; flex-shrink: 0; }
 .header-cta .btn { min-height: 44px; padding: 0 18px; font-size: 14px; }
@@ -128,7 +128,7 @@ h1 { font-size: clamp(30px, 9vw, 84px); font-weight: 800; line-height: 1.02; tex
 .metro-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
 .status { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--ink-soft); }
 .status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--closed); }
-.status.open { color: var(--ok); }
+.status.open { color: color-mix(in srgb, var(--ok) 60%, var(--ink)); } /* зелёный, смешанный с цветом текста: темнее на светлом фоне, светлее на тёмном — читается на любом фоне бренда */
 .status.open .dot { background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 20%, transparent); }
 .phone-link { font: 600 18px var(--font-body); color: var(--ink); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
 
@@ -263,6 +263,8 @@ section.block.alt { background: var(--bg-alt); }
 .hours-table td { padding: 5px 0; }
 .hours-table td:last-child { text-align: right; font-weight: 600; }
 .hours-table tr.today td { color: var(--accent); }
+/* Мелкий текст цветом бренда на тёмном фоне — чуть светлее, чтобы читался; в светлой теме — как был */
+body:not(.mode-light) .eyebrow, body:not(.mode-light) .hours-table tr.today td { color: color-mix(in srgb, var(--accent) 75%, #fff); }
 .map { border-radius: var(--radius); overflow: hidden; min-height: 340px; background: var(--bg-alt); border: 1px solid var(--line); }
 .map iframe { width: 100%; height: 100%; min-height: 340px; border: 0; display: block; }
 .mode-dark .map iframe { filter: grayscale(.5) brightness(.85); }
