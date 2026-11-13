@@ -298,7 +298,6 @@ footer { padding: 28px 0 34px; font-size: 13px; color: var(--ink-soft); text-ali
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   .hero-bg img, .cat-panel { animation: none; }
-  .marquee-track { animation-duration: 100s; } /* бегущая строка не останавливается, только медленнее */
 }
 
 /* Самые узкие телефоны: без стрелки, чтобы длинные названия помещались (нажимается вся карточка) */
